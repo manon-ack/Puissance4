@@ -20,4 +20,3 @@ public class Jeton {
      return Couleur;
  }
 }
-// Hello can you see me ?

@@ -6,7 +6,7 @@ TP 4 - Puissance 4
 package puissance4_ackermann_bellod;
 
 import java.util.Scanner;
-// test 
+
 /**
  *
  * @author vbellod
