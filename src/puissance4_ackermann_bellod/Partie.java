@@ -4,9 +4,9 @@ TPB 1
 TP 4 - Puissance 4
  */
 package puissance4_ackermann_bellod;
-//test deux 
-import java.util.Scanner;
 
+import java.util.Scanner;
+// test 
 /**
  *
  * @author vbellod
