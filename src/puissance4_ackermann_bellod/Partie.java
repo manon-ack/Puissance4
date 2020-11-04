@@ -35,7 +35,9 @@ public class Partie {
         return rep; // on renvoie la réponse à la méthode appelante
      }
     
-public void attribuerCouleurAuxJoueurs() {
+public void attribuerCouleursAuxJoueurs() {
+    ListeJoueurs[0].Couleur = "Jaune";
+    ListeJoueurs[1].couleurjeton = "Rouge";
     
 }
 

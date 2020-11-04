@@ -10,9 +10,9 @@ package puissance4_ackermann_bellod;
  * @author vbellod
  */
 public class Jeton {
-   String Couleur;
+   Joueur Couleur;
    
- public Jeton ( String couleurjeton) { // Permet d'initialiser l'attribut couleur
+ public Jeton ( Joueur couleurjeton) { // Permet d'initialiser l'attribut couleur
    Couleur = couleurjeton;  
  }
  

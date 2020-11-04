@@ -10,53 +10,80 @@ package puissance4_ackermann_bellod;
  * @author vbellod
  */
 public class Cellule {
+    //les attributs
     Jeton jetonCourant;
     boolean trouNoir;
     boolean desintegrateur;
  
- public Cellule ( Jeton JetonC, boolean TrouN, boolean Desintegrateur ) { // Constructeur
-    jetonCourant = JetonC;
-    trouNoir = TrouN;
-    desintegrateur = Desintegrateur;
+ public Cellule () { // Constructeur
+    jetonCourant = null;
+    trouNoir = false;
+    desintegrateur = false;
  }
  
- public boolean affecterJeton(String Jeton) {
-   boolean a = false;
-   if {
-      a = true; }
-   else {
-      a = false; }
-   return a;  
+ public boolean affecterJeton(Jeton UnJeton) {
+      if (jetonCourant==null) {
+          jetonCourant = UnJeton; 
+          return true;
+      }
+      else {
+          return false; 
+      }
  }
  
- public Jeton recupererJeton() {
-     return jetonCourant;
+ public Jeton recupererJeton() { //renvoie une reference vers le jeton de la cellule
+     Jeton jetonref = jetonCourant;
+     jetonCourant = null;
+     return jetonref;
  }
+ 
  
  public boolean supprimerJeton() {
-     
+     if (jetonCourant!= null){
+         jetonCourant=null;
+         return true;
+     }
+     else {
+         return false;
+     }
  }
  
  public boolean placerTrouNoir() {
-     boolean a;
-     if (trouNoir) {
-         
+     if (trouNoir==false) {
+         trouNoir=true;
+         return true;    
      }
      else {
-         
+         return false;
      }  
  }
  
- public boolean presenceTrouNoir() {
-  if (trouNoir==true){
-      }  
- return trouNoir;
+ public boolean placerDesintegrateur () {
+     if (desintegrateur==false){
+         desintegrateur=true;
+         return true;
+     }
+     else {
+         return false;
+     }
  }
  
- public boolean presenceDesintegrateru() {
-   if (desintegrateur==true) {
-   } 
-   return desintegrateur;
+ public boolean presenceTrouNoir() {
+     if (trouNoir==true){
+          return true;
+     }
+     else{
+         return false;
+     }
+ }
+ 
+ public boolean presenceDesintegrateur() {
+     if (desintegrateur==true) {
+         return true;
+     }
+     else{
+         return false;
+     }
  }
  
  public String lireCouleurDuJeton () {
@@ -64,10 +91,25 @@ public class Cellule {
  }
  
  public boolean recupererDesintegrateur () {
-     
+     if (desintegrateur==true){
+         desintegrateur=false;
+         return true;
+     }
+     else{
+         return false;
+     }
  }
+
  
  public boolean activerTrouNoir () {
-     
- }
+     if ((trouNoir==true) && (jetonCourant != null)){
+         trouNoir=false;
+         jetonCourant=null;
+         return true;
+      }
+     else{
+         return false;
+      } 
+}
+ 
 }
