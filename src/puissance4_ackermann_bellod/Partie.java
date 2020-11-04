@@ -37,7 +37,7 @@ public class Partie {
     
 public void attribuerCouleursAuxJoueurs() {
     ListeJoueurs[0].Couleur = "Jaune";
-    ListeJoueurs[1].couleurjeton = "Rouge";
+    ListeJoueurs[1].couleur = "Rouge";
     
 }
 
