@@ -17,6 +17,23 @@ public class Partie {
     Grille GrilleInitiale = new Grille(); // on crée une grille
     Scanner sc = new Scanner(System.in);
     
+    public static int menu() { 
+        /*
+        Cette méthode permet d'afficher le menu de choix
+        L'utilisateur choisi une valeur au clavier, elle est renvoyée 
+        */
+ 
+        Scanner sc;
+        int rep;
+        sc = new Scanner(System.in);
+        System.out.println("Saissisez la conversion que vous souhaitez faire :");
+        System.out.println("1 : Niveau facile");
+        System.out.println("2 : Niveau intermédiaire");
+        System.out.println("3 : Niveau difficile");
+        System.out.println("4 : Niveau expert");
+        rep = sc.nextInt();
+        return rep; // on renvoie la réponse à la méthode appelante
+     }
     
 public void attribuerCouleurAuxJoueurs() {
     
