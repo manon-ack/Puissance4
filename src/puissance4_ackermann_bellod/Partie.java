@@ -12,6 +12,7 @@ import java.util.Scanner;
  *
  * @author vbellod
  */
+
 public class Partie {
     Joueur [] ListeJoueurs = new Joueur [2];
     Joueur joueurCourant;
@@ -27,18 +28,53 @@ public static int menu() {
         Scanner sc;
         int rep;
         sc = new Scanner(System.in);
-        System.out.println("Que voulez-vous faire? ");
+        System.out.println("Que voulez-vous faire?");
         System.out.println("1 : Jouer un jeton");
         System.out.println("2 : Récuperer un jeton");
         System.out.println("3 : Désintégrer un jeton");
         rep = sc.nextInt();
+        while ((rep>3) || (rep<1)){
+            System.out.println("ERREUR : Votre choix n'est pas valide, veuillez entrer un autre choix : ");
+            rep=sc.nextInt();
+        }
         return rep; // on renvoie la réponse à la méthode appelante
      }
     
+// on cree les trois fonctions disponibles pour le joueur
+
+//choix 1 jouer un jeton
+public void jouerjeton (){
+    System.out.println("Dans quelle colonne voulez vous mettre votre jeton : ");
+    int choixcolonne = sc.nextInt();
+    //si le joueur saisie une colonne qui n'existe pas on demande une autre saisie 
+    while ((choixcolonne<1) || (choixcolonne>7)){ 
+        System.out.println("ERREUR : Votre saisie n'est pas valide, veuillez entrer une autre colonne : ");
+        choixcolonne = sc.nextInt();
+    }
+    boolean jeu;
+    //on utilise la methode ajouterjetondanscolonne pour mettre le jeton ou le joueur veut
+    jeu=GrilleInitiale.ajouterJetonDansColonne(joueurCourant, choixcolonne);
+    while (jeu==false) { //si la methode retourne false la colonne est remplie, le joueur doit donner une autre colonne
+        System.out.println("La colonne que vous avez sélectionné est pleine, veuillez entre une autre colonne : ");
+        choixcolonne = sc.nextInt();
+        jeu=GrilleInitiale.ajouterJetonDansColonne(joueurCourant, choixcolonne);
+    }
+}
+
+//choix 2 recuperer un jeton
+public boolean recupererlejeton(){
+    
+}
+
+//choix 3 desintegrer un jeton
+public boolean desintegrerlejeton(){
+    
+}
+
+
 public void attribuerCouleursAuxJoueurs() { //attriue une couleur aux deux joueurs 
     ListeJoueurs[0].Couleur = "Jaune";
-    ListeJoueurs[1].Couleur = "Rouge";
-    
+    ListeJoueurs[1].Couleur = "Rouge";   
 }
 
 public void initialierPartie () {
@@ -69,10 +105,10 @@ public void initialierPartie () {
          Joueur_2.ajouterJeton(jeton2); 
     }
     
-    GrilleInitiale.afficherGrilleSurConsole();
+    GrilleInitiale.afficherGrilleSurConsole(); //on peut afficher la grille de jeu sur la console 
 }
 
-public void debuterPartie () {
+public void debuterPartie () { //lance la partie 
     
 }
 }

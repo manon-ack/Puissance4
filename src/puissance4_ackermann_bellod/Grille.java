@@ -88,20 +88,46 @@ public void afficherGrilleSurConsole () {
    }
 }
 
-public boolean celluleOccupee (int a, int b) { // a= lignes; b= colonnes
-    if (Cellules[a][b]!= null) { //on verifie si les cases
-        return true;
+public boolean celluleOccupee (int i, int j) { 
+    if (Cellules[i][j]!= null) { 
+        return true; //renvoie vrai si la cellule de coordonnées données est occupée
     }
-    return false;
+    return false; //renvoie faux si la cellule est vide 
 }
 
 public String lireCouleurDuJeton (int i, int j) {
-    String a;
-    a = Cellules [i][j].lireCouleurDuJeton(); //on utilise la methode lireCouleurDuJeton de la classe Cellule
-    return a;
+    return Cellules [i][j].lireCouleurDuJeton(); //on utilise la methode lireCouleurDuJeton de la classe Cellule
 }
 
-public boolean etreGagnantePourJoueur () {
+public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si la grille est gagnante pour le joueur en parametre si 4jetons alignés
+    
+    //gagne si 4jetons alignés en ligne 
+    for (int i=0; i<6;i++) {
+        for (int j=0;j<7;j++){
+            if ((Cellules[i][j].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i][j+1].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i][j+2].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i][j+3].lireCouleurDuJeton()==jetonCourant.Couleur)){
+            return true;
+            }
+        }    
+    }
+    
+    //gagne si 4jetons alignés en colonnes
+    for (int j=0;j<7;j++) {
+        for (int i=6;i<6;i++) {
+            if ((Cellules[i][j].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i+1][j].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i+2][j].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i+3][j].lireCouleurDuJeton()==jetonCourant.Couleur)){
+            return true;
+            } 
+        }
+    }
+    
+    //gagne si 4jetons alignés en diagnonale  vers le haut
+    for () {
+        
+    }
+    
+    //gagne si 4jetons alignés en diagonale vers le bas 
+    for () {
+        
+    }
     
 }
 
@@ -114,8 +140,12 @@ public boolean colonneRemplie (int j) {
     }
 }
 
-public void tasserGrille (int j) { //
-    
+public void tasserGrille (int j) { //si un jeton est capturé ou detruit, on decale de une ligne les jetons au dessus de la cellule liberée
+    for (int i=5; i<=1; i--) { //on part du bas de la grille
+        if (Cellules [i][j].jetonCourant == null) { //si la case est nulle qd le jeton a ete detruit ou capture
+            Cellules[i][j].jetonCourant = Cellules[i-1][j].jetonCourant; //on decale d'une ligne
+        }
+    }
 }
 
 public boolean placerTrouNoir (int i,int j) { //ajoute un trou noir à l'endroit indiqué
