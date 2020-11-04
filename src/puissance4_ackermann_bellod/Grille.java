@@ -9,10 +9,11 @@ package puissance4_ackermann_bellod;
  *
  * @author vbellod
  */
+
 public class Grille {
-   Cellule [][] Cellules = new Cellule [6][7];
+   Cellule [][] Cellules = new Cellule [6][7]; //on a une grille de 6lignes et 7 colonnes
    
-public Grille () {
+public Grille () { //on initialise la grille en créant les 42 cellules vides
        for (int i=0; i<6; i++) {
            for (int j=0; j<7; j++) {
                Cellules[i][j] = new Cellule();
@@ -20,23 +21,44 @@ public Grille () {
        }
    }
 
-public boolean ajouterJetonDansColonne (Jeton UnJeton, int j) {
+public boolean ajouterJetonDansColonne (Joueur joueurCourant, int j) { //ajoute le jeton dans la colonne souhaitée
     if (colonneRemplie(j)==true) {
         return false; //renvoie faux la colonne est remplie on ne peut pas ajouter un jeton
     }
-    else {
-      for (int i=0; i<6; i++){
-          if (Cellules[i][j].recupererJeton()==null) {
-              Cellules[i][j].affecterJeton(UnJeton);
-              return true; //renvoie vrai le jeton a été ajouté dans la colonne ciblée, et sur la cellule vide la plus basse
-          }
-      }  
+    int i = 0;
+    while (Cellules [i][j].jetonCourant != null) { //on cherche dans quelle ligne le jeton est ajouté
+        i++;
     }
-    return false;  
+    Jeton unJeton = joueurCourant.retirerJeton();  //on prend un jeton au joueur
+    Cellules [i][j].jetonCourant = unJeton; //on ajoute le jeton dans la cellule
+    
+    if(Cellules [i][j].presenceDesintegrateur()) { //on verifie la presence d'un desintegrateur 
+       Cellules [i][j].recupererDesintegrateur();
+       joueurCourant.nombreDesintegrateurs++;
+    }
+    
+   if (Cellules [i][j].presenceTrouNoir()) { //on verifie la présence d'un trou noir 
+       Cellules [i][j].activerTrouNoir();
+  
+    }
+   return true;     
+}
+
+public void activertrounoir (int j) {
+    int i=5;
+    while (Cellules [i][j].jetonCourant == null) {
+        i--;
+        if (i==0){
+            break;
+        }
+    }
+    if ((i>= 0) && (i<6)) {
+        Cellules [i][j].activerTrouNoir();
+    }
 }
 
 public boolean etreRemplie () { //renvoie vraie si la grille est pleine
-    for (int i=0; i<6;i++) {
+    for (int i=0; i<6;i++) { //on parcourt la grille pour voir si elle est remplie
         for (int j=0; j<7;j++) {
             if (Cellules [i][j].recupererJeton() == null){
                 return false;
@@ -83,12 +105,12 @@ public boolean etreGagnantePourJoueur () {
     
 }
 
-public boolean colonneRemplie (int j) {
-    if (Cellules[6][j].recupererJeton()==null) {
-        return false; //renvoie faux la colonne n'est pas remplie, on peut ajouter un jeton
+public boolean colonneRemplie (int j) { 
+    if (Cellules[5][j].recupererJeton()==null) {
+        return false; //renvoie faux la colonne j n'est pas remplie, on peut ajouter un jeton
     }
     else {
-        return true; //renvoie vraie la colonne est remplie, on ne peut pas ajouter un jeton
+        return true; //renvoie vraie la colonne j est remplie, on ne peut pas ajouter un jeton
     }
 }
 

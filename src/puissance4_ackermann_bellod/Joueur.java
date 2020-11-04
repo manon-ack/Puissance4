@@ -12,41 +12,38 @@ package puissance4_ackermann_bellod;
 public class Joueur {
   String Nom;
   String Couleur;
-  String [] ListeJetons = new String [21];
-  int nombreDesintegrateur;
+  Jeton [] ListeJetons = new Jeton [21];
+  int nombreDesintegrateurs;
   int nombreJetonsRestant;
 
-public Joueur ( String nom) {
+public Joueur (String nom) { //constructeur pour initialiser 
    Nom = nom;
+   nombreDesintegrateurs=0;
+   nombreJetonsRestant=0;
 }
 
-public void affecterCouleur (String couleur) {
+public void affecterCouleur (String couleur) { //affecte la couleur en paramètre au joueur 
    Couleur=couleur;
 }
 
-public boolean ajouterJeton(String Jeton) {
-   boolean a = false;
-   for (int i=0; i<=21; i++) {
-     if (ListeJetons[i]== null ) {
-         ListeJetons [i] = Couleur;
-         a = true; }
-     else {
-         a = false; }
-   }
-   return a;
+public void ajouterJeton(Jeton unJeton) { //ajoute le jeton en paramètre à la liste des jetons
+    ListeJetons[nombreJetonsRestant++] = unJeton;
 }
 
-public void obtenirDesintegrateur() {
-   nombreDesintegrateur = nombreDesintegrateur +1; 
+public Jeton retirerJeton() {
+    nombreJetonsRestant = nombreJetonsRestant-1;
+    return ListeJetons[nombreJetonsRestant];
+}
+public void obtenirDesintegrateur() { //incrémente le nombre de desintegrateurs du joueur
+   nombreDesintegrateurs = nombreDesintegrateurs +1; 
 }
 
-public boolean utiliserDesintegrateur () {
-   boolean a;
-   if (nombreDesintegrateur != 0) {
-       nombreDesintegrateur = nombreDesintegrateur -1;
-       a = true; }
+public boolean utiliserDesintegrateur () { //szcremente le nb de desintegrateurs
+   if (nombreDesintegrateurs != 0) {
+       nombreDesintegrateurs = nombreDesintegrateurs -1;
+       return true; } //confirme l'utilisation du desintegrateur
    else {
-       a = false; }
-   return a;
+       return false; //renvoie faux s'il ne restait plus de désintégrateurs
+     }
 }
 }
