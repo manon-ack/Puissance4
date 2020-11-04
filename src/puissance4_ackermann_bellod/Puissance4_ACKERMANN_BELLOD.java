@@ -20,6 +20,6 @@ public class Puissance4_ACKERMANN_BELLOD {
       Joueur1.affecterCouleur("jaune");
       Joueur2.affecterCouleur("rouge");
     }
-    // test coucou
+
     
 }
