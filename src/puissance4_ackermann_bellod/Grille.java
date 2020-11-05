@@ -37,7 +37,7 @@ public boolean ajouterJetonDansColonne (Joueur joueurCourant, int j) { //ajoute 
        joueurCourant.nombreDesintegrateurs++;
     }
     
-   if (Cellules [i][j].presenceTrouNoir()) { //on verifie la présence d'un trou noir 
+    if (Cellules [i][j].presenceTrouNoir()) { //on verifie la présence d'un trou noir 
        Cellules [i][j].activerTrouNoir();
   
     }
@@ -82,10 +82,30 @@ public void viderGrille () { //vider la grille
 }
 
 public void afficherGrilleSurConsole () {
-   for (int i=0;i<6;i++){
-       for (int j=0;j<7;j++)
-     System.out.println(Cellules[i][j]);
-   }
+   for (int i=0;i<6;i++){ //on parcourt les lignes
+       for (int j=0;j<7;j++) { //on parcourt les colonnes 
+           
+        if (Cellules[i][j].recupererJeton()==null) { //si il n'y a pas de jeton on affiche V pour vide
+            System.out.println("V");
+        }
+        if (Cellules[i][j].recupererJeton()!=null){
+            if (Cellules[i][j].lireCouleurDuJeton()=="Jaune") {
+                System.out.println("J"); //on affiche un J s'il y a un jeton jaune sur la cellule
+            }
+            else{
+                System.out.println("R"); //sinon on affiche rouge 
+            }
+        }
+       
+        if (Cellules[i][j].presenceTrouNoir()== true) {
+           System.out.println("T");
+        }
+        
+        if (Cellules[i][j].presenceDesintegrateur()== true){
+            System.out.println("D");
+        }
+       }
+    }
 }
 
 public boolean celluleOccupee (int i, int j) { 
@@ -103,7 +123,7 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
     
     //gagne si 4jetons alignés en ligne 
     for (int i=0; i<6;i++) {
-        for (int j=0;j<7;j++){
+        for (int j=0;j<4;j++){
             if ((Cellules[i][j].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i][j+1].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i][j+2].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i][j+3].lireCouleurDuJeton()==jetonCourant.Couleur)){
             return true;
             }
@@ -112,7 +132,7 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
     
     //gagne si 4jetons alignés en colonnes
     for (int j=0;j<7;j++) {
-        for (int i=6;i<6;i++) {
+        for (int i=0;i<4;i++) {
             if ((Cellules[i][j].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i+1][j].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i+2][j].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i+3][j].lireCouleurDuJeton()==jetonCourant.Couleur)){
             return true;
             } 
@@ -120,16 +140,25 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
     }
     
     //gagne si 4jetons alignés en diagnonale  vers le haut
-    for () {
-        
+    for (int i=0; i<6; i++) {
+        for (int j=0; j<4; j++){
+            if ((Cellules[i][j].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i-1][j+1].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i-2][j+2].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i-3][j+3].lireCouleurDuJeton()==jetonCourant.Couleur)) {
+                return true;
+            }
+        }
     }
     
     //gagne si 4jetons alignés en diagonale vers le bas 
-    for () {
-        
+    for (int i=0;i<6;i++) {
+        for (int j=0; j<4; j++){
+            if ((Cellules[i][j].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i+1][j+1].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i+2][j+2].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i+3][j+3].lireCouleurDuJeton()==jetonCourant.Couleur)) {
+                return true;
+            }
+        }
     }
-    
+  return false;  
 }
+
 
 public boolean colonneRemplie (int j) { 
     if (Cellules[5][j].recupererJeton()==null) {
