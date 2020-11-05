@@ -63,13 +63,57 @@ public void jouerjeton (){
 
 //choix 2 recuperer un jeton
 public boolean recupererlejeton(){
-    
+    int c;
+    int l;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Choissisez les coordonnées du jeton à récupérer: ");
+    System.out.println("Choissisez la colonne");
+    c = sc.nextInt()-1;
+    while (c > 6 || c <0) {
+        System.out.println("Erreur, choissisez une colonne valide");
+        c = sc.nextInt()-1;
+    }
+    System.out.println("Choissisez la ligne");
+    l = sc.nextInt()-1;
+    while (l > 5 || c <0) {
+        System.out.println("Erreur, choissisez une ligne valide");
+        l = sc.nextInt()-1;
+    }
+    if (GrilleInitiale.Cellules[l][c].jetonCourant != null && GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()=jetonCourant.Couleur) {
+        joueurCourant.ajouterJeton(GrilleInitiale.recupererJeton(l,c));
+        GrilleInitiale.tasserGrille(l,c);
+        return true;
+    }
+    else {
+        return false; }
 }
 
 //choix 3 desintegrer un jeton
 public boolean desintegrerlejeton(){
-    
-}
+    int c;
+    int l;
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Choissisez les coordonnées du jeton à récupérer: ");
+    System.out.println("Choissisez la colonne");
+    c = sc.nextInt()-1;
+    while (c > 6 || c <0) {
+        System.out.println("Erreur, choissisez une colonne valide");
+        c = sc.nextInt()-1;
+    }
+    System.out.println("Choissisez la ligne");
+    l = sc.nextInt()-1;
+    while (l > 5 || c <0) {
+        System.out.println("Erreur, choissisez une ligne valide");
+        l = sc.nextInt()-1;
+    }
+    if (GrilleInitiale.Cellules[l][c].jetonCourant != null && GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()){
+        GrilleInitiale.supprimerJeton(l,c);
+        GrilleInitiale.tasserGrille(l,c);
+        joueurCourant.utiliserDesintegrateur();
+        return true;
+    }
+    else {
+        return false; }
 
 
 public void attribuerCouleursAuxJoueurs() { //attriue une couleur aux deux joueurs 
