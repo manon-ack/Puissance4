@@ -38,7 +38,7 @@ public boolean ajouterJetonDansColonne (Joueur joueurCourant, int j) { //ajoute 
     }
     
     if (Cellules [i][j].presenceTrouNoir()) { //on verifie la présence d'un trou noir 
-       Cellules [i][j].activerTrouNoir();
+       Cellules [i][j].activerTrouNoir(); // on active le trou noir
   
     }
    return true;     

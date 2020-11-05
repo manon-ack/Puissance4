@@ -5,6 +5,7 @@ TP 4 - Puissance 4
  */
 package puissance4_ackermann_bellod;
 
+import java.util.Random;
 import java.util.Scanner;
 //import java.util.Random;
 
@@ -89,7 +90,7 @@ public boolean recupererlejeton(){
 
 //choix 3 desintegrer un jeton
 public boolean desintegrerlejeton(){
-    System.out.println("Choissisez les coordonnées du jeton à récupérer: ");
+    System.out.println("Choissisez les coordonnées du jeton à désintégrer: ");
     int c;
     int l;
     System.out.println("Choissisez la colonne");
@@ -124,9 +125,21 @@ public void initialiserPartie () {
     GrilleInitiale.viderGrille(); //on prepare la grille pour une partie
     
     //placer les 5 trous noirs 
+    Random aléatoire = new Random();
     
+    for (int i=0; i<5; i++) {
+        int l = aléatoire.nextInt(6);
+        int c = aléatoire.nextInt(7);
+        GrilleInitiale.placerTrouNoir(l,c);
+    }
     
     //placer les 5 desintegrateurs restants
+    
+    for (int i=0; i<5; i++) {
+        int l = aléatoire.nextInt(6);
+        int c = aléatoire.nextInt(7);
+        GrilleInitiale.placerDesintegrateur(l,c);
+    }
     
     //on insere les joueurs 
     System.out.println("Pseudo du Joueur 1 : ");   
