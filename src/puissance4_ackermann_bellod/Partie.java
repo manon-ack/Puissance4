@@ -81,7 +81,7 @@ public boolean recupererlejeton(){
     }
     if (GrilleInitiale.Cellules[l][c].jetonCourant != null && GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()=jetonCourant.Couleur) {
         joueurCourant.ajouterJeton(GrilleInitiale.recupererJeton(l,c));
-        GrilleInitiale.tasserGrille(l,c);
+        GrilleInitiale.tasserGrille(c);
         return true;
     }
     else {
@@ -108,13 +108,13 @@ public boolean desintegrerlejeton(){
     }
     if (GrilleInitiale.Cellules[l][c].jetonCourant != null && GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()){
         GrilleInitiale.supprimerJeton(l,c);
-        GrilleInitiale.tasserGrille(l,c);
+        GrilleInitiale.tasserGrille(c);
         joueurCourant.utiliserDesintegrateur();
         return true;
     }
     else {
         return false; }
-
+}
 
 public void attribuerCouleursAuxJoueurs() { //attriue une couleur aux deux joueurs 
     ListeJoueurs[0].Couleur = "Jaune";

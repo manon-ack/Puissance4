@@ -173,6 +173,7 @@ public void tasserGrille (int j) { //si un jeton est capturé ou detruit, on dec
     for (int i=5; i<=1; i--) { //on part du bas de la grille
         if (Cellules [i][j].jetonCourant == null) { //si la case est nulle qd le jeton a ete detruit ou capture
             Cellules[i][j].jetonCourant = Cellules[i-1][j].jetonCourant; //on decale d'une ligne
+            Cellules[i-1][j].jetonCourant = null; // La case est maintenant vide
         }
     }
 }
