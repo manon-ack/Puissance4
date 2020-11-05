@@ -86,25 +86,26 @@ public void afficherGrilleSurConsole () {
        for (int j=0;j<7;j++) { //on parcourt les colonnes 
            
         if (Cellules[i][j].recupererJeton()==null) { //si il n'y a pas de jeton on affiche V pour vide
-            System.out.println("V");
+            System.out.print("V");
         }
-        if (Cellules[i][j].recupererJeton()!=null){
+        else if (Cellules[i][j].recupererJeton()!=null){
             if (Cellules[i][j].lireCouleurDuJeton()=="Jaune") {
-                System.out.println("J"); //on affiche un J s'il y a un jeton jaune sur la cellule
+                System.out.print("J"); //on affiche un J s'il y a un jeton jaune sur la cellule
             }
             else{
-                System.out.println("R"); //sinon on affiche rouge 
+                System.out.print("R"); //sinon on affiche rouge 
             }
         }
        
-        if (Cellules[i][j].presenceTrouNoir()== true) {
-           System.out.println("T");
+        else if (Cellules[i][j].presenceTrouNoir()== true) {
+           System.out.print("T");
         }
         
-        if (Cellules[i][j].presenceDesintegrateur()== true){
-            System.out.println("D");
+        else if (Cellules[i][j].presenceDesintegrateur()== true){
+            System.out.print("D");
         }
        }
+       System.out.println();
     }
 }
 
