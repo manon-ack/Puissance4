@@ -25,9 +25,9 @@ public boolean ajouterJetonDansColonne (Joueur joueurCourant, int j) { //ajoute 
     if (colonneRemplie(j)==true) {
         return false; //renvoie faux la colonne est remplie on ne peut pas ajouter un jeton
     }
-    int i = 0;
+    int i = 5;
     while (Cellules [i][j].jetonCourant != null) { //on cherche dans quelle ligne le jeton est ajouté
-        i++;
+        i--;
     }
     Jeton unJeton = joueurCourant.retirerJeton();  //on prend un jeton au joueur
     Cellules [i][j].jetonCourant = unJeton; //on ajoute le jeton dans la cellule
@@ -45,9 +45,9 @@ public boolean ajouterJetonDansColonne (Joueur joueurCourant, int j) { //ajoute 
 }
 
 public void activertrounoir (int j) {
-    int i=5;
+    int i=0;
     while (Cellules [i][j].jetonCourant == null) {
-        i--;
+        i++;
         if (i==0){
             break;
         }
@@ -162,7 +162,7 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
 
 
 public boolean colonneRemplie (int j) { 
-    if (Cellules[5][j].recupererJeton()==null) {
+    if (Cellules[0][j].recupererJeton()==null) {
         return false; //renvoie faux la colonne j n'est pas remplie, on peut ajouter un jeton
     }
     else {
