@@ -67,13 +67,13 @@ public boolean recupererlejeton(){
     System.out.println("Choissisez les coordonnées du jeton à récupérer : ");
     int c;
     int l;
-    System.out.println("Choissisez la colonne");
+    System.out.println("Choissisez la colonne : ");
     c = sc.nextInt()-1;
     while (c > 6 || c <0) {
         System.out.println("ERREUR : choissisez une colonne valide");
         c = sc.nextInt()-1;
     }
-    System.out.println("Choissisez la ligne");
+    System.out.println("Choissisez la ligne : ");
     l = sc.nextInt()-1;
     while (l > 5 || c <0) {
         System.out.println("ERREUR : choissisez une ligne valide");
@@ -93,13 +93,13 @@ public boolean desintegrerlejeton(){
     System.out.println("Choissisez les coordonnées du jeton à désintégrer: ");
     int c;
     int l;
-    System.out.println("Choissisez la colonne");
+    System.out.println("Choissisez la colonne: ");
     c = sc.nextInt()-1;
     while (c > 6 || c <0) {
         System.out.println("ERREUR : choissisez une colonne valide");
         c = sc.nextInt()-1;
     }
-    System.out.println("Choissisez la ligne");
+    System.out.println("Choissisez la ligne : ");
     l = sc.nextInt()-1;
     while (l > 5 || c <0) {
         System.out.println("ERREUR : choissisez une ligne valide");
@@ -133,8 +133,7 @@ public void initialiserPartie () {
         GrilleInitiale.placerTrouNoir(ltn,ctn);
     }
     
-    //placer les 5 desintegrateurs restants
-    
+    //placer les 5 desintegrateurs 
     for (int i=0; i<5; i++) {
         int ld = aléatoire.nextInt(6);
         int cd = aléatoire.nextInt(7);
