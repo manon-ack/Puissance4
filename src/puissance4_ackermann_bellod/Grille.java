@@ -86,7 +86,7 @@ public void afficherGrilleSurConsole () {
        for (int j=0;j<7;j++) { //on parcourt les colonnes 
            
         if (Cellules[i][j].recupererJeton()==null) { //si il n'y a pas de jeton on affiche V pour vide
-            System.out.print("V");
+            System.out.print("X");
         }
         else if (Cellules[i][j].recupererJeton()!=null){
             if (Cellules[i][j].lireCouleurDuJeton()=="Jaune") {

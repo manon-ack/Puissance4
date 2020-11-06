@@ -128,17 +128,17 @@ public void initialiserPartie () {
     Random aléatoire = new Random();
     
     for (int i=0; i<5; i++) {
-        int l = aléatoire.nextInt(6);
-        int c = aléatoire.nextInt(7);
-        GrilleInitiale.placerTrouNoir(l,c);
+        int ltn = aléatoire.nextInt(6);
+        int ctn = aléatoire.nextInt(7);
+        GrilleInitiale.placerTrouNoir(ltn,ctn);
     }
     
     //placer les 5 desintegrateurs restants
     
     for (int i=0; i<5; i++) {
-        int l = aléatoire.nextInt(6);
-        int c = aléatoire.nextInt(7);
-        GrilleInitiale.placerDesintegrateur(l,c);
+        int ld = aléatoire.nextInt(6);
+        int cd = aléatoire.nextInt(7);
+        GrilleInitiale.placerDesintegrateur(ld,cd);
     }
     
     //on insere les joueurs 
