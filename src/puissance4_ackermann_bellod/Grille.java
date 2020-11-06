@@ -85,25 +85,25 @@ public void afficherGrilleSurConsole () {
    for (int i=0;i<6;i++){ //on parcourt les lignes
        for (int j=0;j<7;j++) { //on parcourt les colonnes 
            
-        if (Cellules[i][j].recupererJeton()==null) { //si il n'y a pas de jeton on affiche V pour vide
-            System.out.print("X");
-        }
-        else if (Cellules[i][j].recupererJeton()!=null){
-            if (Cellules[i][j].lireCouleurDuJeton()=="Jaune") {
-                System.out.print("J"); //on affiche un J s'il y a un jeton jaune sur la cellule
-            }
-            else{
-                System.out.print("R"); //sinon on affiche rouge 
-            }
-        }
-       
-        else if (Cellules[i][j].presenceTrouNoir()== true) {
+        if (Cellules[i][j].presenceTrouNoir()== true) {
            System.out.print("T");
         }
         
         else if (Cellules[i][j].presenceDesintegrateur()== true){
             System.out.print("D");
         }
+           
+        else if (Cellules[i][j].recupererJeton()==null) { //si il n'y a pas de jeton on affiche V pour vide
+            System.out.print("X");
+        }
+        else if ((Cellules[i][j].recupererJeton()!=null) && (Cellules[i][j].presenceTrouNoir()== false) && (Cellules[i][j].presenceDesintegrateur()== false)){
+            if (Cellules[i][j].lireCouleurDuJeton()=="Jaune") {
+                System.out.print("J"); //on affiche un J s'il y a un jeton jaune sur la cellule
+            }
+            else{
+                System.out.print("R"); //sinon on affiche rouge 
+            }
+        }       
        }
        System.out.println();
     }
