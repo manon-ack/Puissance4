@@ -157,6 +157,7 @@ public void initialiserPartie () {
     
     attribuerCouleursAuxJoueurs(); //on leur attribue une couleur grâce à la méthode 
     
+    System.out.println("\n");
     System.out.println(Joueur_1.Nom + " prend les jetons de couleur " + Joueur_1.Couleur);
     System.out.println(Joueur_2.Nom + " prend les jetons de couleur " + Joueur_2.Couleur);
     System.out.println("\n");
@@ -198,25 +199,41 @@ public void debuterPartie () { //lance la partie
                 case 1: 
                     jouerjeton(); // On appelle la méthode correspondante
                     GrilleInitiale.afficherGrilleSurConsole();
+                    JoueurSuivant();
                     //affecterjeton pr savoir si ajout bien passé
                     //tour 
                     break;
                 case 2:
                     recupererlejeton(); // On appelle la méthode correspondante
                     GrilleInitiale.afficherGrilleSurConsole();
+                    JoueurSuivant();
                     //tour
                     break;
                 case 3:
                     desintegrerlejeton(); // On appelle la méthode correspondante
                     GrilleInitiale.afficherGrilleSurConsole();
+                    JoueurSuivant();
                     break;
                 default:
                     System.out.println("Choix non valide"); // On vérifie que le chiffre selectionné fait bien partie des options
+                    JoueurSuivant();
                     break;
             }
         } while (rep != 4);
           
  }
-    
-}
 
+public void JoueurSuivant() {
+ if ( joueurCourant == ListeJoueurs[0]) {
+     joueurCourant = ListeJoueurs[1];
+     System.out.println("\n");
+     System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
+     System.out.println("\n"); }
+ else {
+     joueurCourant = ListeJoueurs[0];
+     System.out.println("\n");
+     System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
+     System.out.println("\n"); }
+ }
+
+}

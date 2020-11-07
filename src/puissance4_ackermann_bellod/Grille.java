@@ -86,7 +86,7 @@ public void viderGrille () { //vider la grille
             Cellules[i][j].trouNoir = false; //on remet les trou noir et desingrateur sur false
             Cellules[i][j].desintegrateur = false;
         }
-    }  
+}  
 }
 
 public void afficherGrilleSurConsole () {
@@ -102,7 +102,7 @@ public void afficherGrilleSurConsole () {
         }
            
         else if (Cellules[i][j].recupererJeton()==null) { //si il n'y a pas de jeton ni tn ni desint on affiche X 
-            System.out.print("X");
+            System.out.print(".");
         }
         else if ((Cellules[i][j].recupererJeton()!=null) && (Cellules[i][j].presenceTrouNoir()== false) && (Cellules[i][j].presenceDesintegrateur()== false)){ //&& (Cellules[i][j].affecterJeton(unJeton)==true
             if (Cellules[i][j].lireCouleurDuJeton()=="Jaune") {
@@ -167,7 +167,7 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
     }
   return false;  
 }
-
+// Penser à mettre le cas ou personne ne gagne, grille complete sans 4 jetons alignés de la meme couleur
 
 public void tasserGrille (int j) { //si un jeton est capturé ou detruit, on decale de une ligne les jetons au dessus de la cellule liberée
     for (int i=5; i<=1; i--) { //on part du bas de la grille
