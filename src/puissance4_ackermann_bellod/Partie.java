@@ -5,9 +5,8 @@ TP 4 - Puissance 4
  */
 package puissance4_ackermann_bellod;
 
-import java.util.Random;
 import java.util.Scanner;
-//import java.util.Random;
+import java.util.Random;
 
 /**
  *
@@ -120,6 +119,14 @@ public void attribuerCouleursAuxJoueurs() { //attriue une couleur aux deux joueu
     ListeJoueurs[1].Couleur = "Rouge";   
 }
 
+
+public Joueur prochainjoueur (Joueur joueur) {
+    if (ListeJoueurs[0]==joueurCourant){
+        return ListeJoueurs[1];
+    }
+    return ListeJoueurs[0];
+}
+
 public void initialiserPartie () {
     
     GrilleInitiale.viderGrille(); //on prepare la grille pour une partie
@@ -165,10 +172,24 @@ public void initialiserPartie () {
     System.out.println("\n");
 }
 
+/* public boolean tour () {
+    //mettre prochain joueur
+    //affiche la grille apres le premier jeu
+    //GrilleInitiale.afficherGrilleSurConsole();
+    if (etreGagnantePourJoueur(jetonCourant)==true) {
+        System.out.println(joueurCourant.Nom + "a gagné cette partie");
+    }
+    return false;
+} */
+
 public void debuterPartie () { //lance la partie 
     
     System.out.println("Nous allons débuter une partie ! ");
     initialiserPartie();
+    joueurCourant=null;
+    joueurCourant=ListeJoueurs[0];
+    System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
+    System.out.println("\n");
     
     int rep; // On initialise rep       
         do { // on fait une boucle infinie tant que la condition while en bas est vrai
@@ -176,12 +197,18 @@ public void debuterPartie () { //lance la partie
             switch (rep) {
                 case 1: 
                     jouerjeton(); // On appelle la méthode correspondante
+                    GrilleInitiale.afficherGrilleSurConsole();
+                    //affecterjeton pr savoir si ajout bien passé
+                    //tour 
                     break;
                 case 2:
                     recupererlejeton(); // On appelle la méthode correspondante
+                    GrilleInitiale.afficherGrilleSurConsole();
+                    //tour
                     break;
                 case 3:
                     desintegrerlejeton(); // On appelle la méthode correspondante
+                    GrilleInitiale.afficherGrilleSurConsole();
                     break;
                 default:
                     System.out.println("Choix non valide"); // On vérifie que le chiffre selectionné fait bien partie des options

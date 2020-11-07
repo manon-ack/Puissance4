@@ -20,6 +20,14 @@ public Grille () { //on initialise la grille en créant les 42 cellules vides
            }
        }
    }
+public boolean colonneRemplie (int j) { 
+    if (Cellules[0][j].recupererJeton()==null) {
+        return false; //renvoie faux la colonne j n'est pas remplie, on peut ajouter un jeton
+    }
+    else {
+        return true; //renvoie vraie la colonne j est remplie, on ne peut pas ajouter un jeton
+    }
+}
 
 public boolean ajouterJetonDansColonne (Joueur joueurCourant, int j) { //ajoute le jeton dans la colonne souhaitée
     if (colonneRemplie(j)==true) {
@@ -30,7 +38,7 @@ public boolean ajouterJetonDansColonne (Joueur joueurCourant, int j) { //ajoute 
         i--;
     }
     Jeton unJeton = joueurCourant.retirerJeton();  //on prend un jeton au joueur
-    Cellules [i][j].jetonCourant = unJeton; //on ajoute le jeton dans la cellule
+    Cellules [i][j].jetonCourant = unJeton; //on ajoute ce jeton dans la cellule
     
     if(Cellules [i][j].presenceDesintegrateur()) { //on verifie la presence d'un desintegrateur 
        Cellules [i][j].recupererDesintegrateur();
@@ -93,10 +101,10 @@ public void afficherGrilleSurConsole () {
             System.out.print("D");
         }
            
-        else if (Cellules[i][j].recupererJeton()==null) { //si il n'y a pas de jeton on affiche V pour vide
+        else if (Cellules[i][j].recupererJeton()==null) { //si il n'y a pas de jeton ni tn ni desint on affiche X 
             System.out.print("X");
         }
-        else if ((Cellules[i][j].recupererJeton()!=null) && (Cellules[i][j].presenceTrouNoir()== false) && (Cellules[i][j].presenceDesintegrateur()== false)){
+        else if ((Cellules[i][j].recupererJeton()!=null) && (Cellules[i][j].presenceTrouNoir()== false) && (Cellules[i][j].presenceDesintegrateur()== false)){ //&& (Cellules[i][j].affecterJeton(unJeton)==true
             if (Cellules[i][j].lireCouleurDuJeton()=="Jaune") {
                 System.out.print("J"); //on affiche un J s'il y a un jeton jaune sur la cellule
             }
@@ -160,15 +168,6 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
   return false;  
 }
 
-
-public boolean colonneRemplie (int j) { 
-    if (Cellules[0][j].recupererJeton()==null) {
-        return false; //renvoie faux la colonne j n'est pas remplie, on peut ajouter un jeton
-    }
-    else {
-        return true; //renvoie vraie la colonne j est remplie, on ne peut pas ajouter un jeton
-    }
-}
 
 public void tasserGrille (int j) { //si un jeton est capturé ou detruit, on decale de une ligne les jetons au dessus de la cellule liberée
     for (int i=5; i<=1; i--) { //on part du bas de la grille
