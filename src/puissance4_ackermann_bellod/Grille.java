@@ -166,14 +166,14 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
         }
     }
     if (etreRemplie() == true) {
-        System.out.println("La grille est pleine ! Vous avez perdus, veuillez recommencer une partie");
+        System.out.println("La grille est pleine ! Vous avez perdu... Recommencer une partie !");
        } 
   return false;  
 }
 // Penser à mettre le cas ou personne ne gagne, grille complete sans 4 jetons alignés de la meme couleur
 
 public void tasserGrille (int j) { //si un jeton est capturé ou detruit, on decale de une ligne les jetons au dessus de la cellule liberée
-    for (int i=5; i<=1; i--) { //on part du bas de la grille
+    for (int i=5; i<=0; i--) { //on part du bas de la grille
         if (Cellules [i][j].jetonCourant == null) { //si la case est nulle qd le jeton a ete detruit ou capture
             Cellules[i][j].jetonCourant = Cellules[i-1][j].jetonCourant; //on decale d'une ligne
             Cellules[i-1][j].jetonCourant = null; // La case est maintenant vide

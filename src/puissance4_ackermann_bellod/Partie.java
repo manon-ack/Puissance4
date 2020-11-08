@@ -184,20 +184,20 @@ public void debuterPartie () { //lance la partie
                     jouerjeton(); // On appelle la méthode correspondante
                     GrilleInitiale.afficherGrilleSurConsole(); //on affiche la grille apres l'action
                     JoueurSuivant();
-                    //joueurgagnant();
+                    //joueurGagnant();
                     //affecterjeton pr savoir si ajout bien passé
                     break;
                 case 2:
                     recupererlejeton(); // On appelle la méthode correspondante
                     GrilleInitiale.afficherGrilleSurConsole(); //on affiche la grille apres l'action
                     JoueurSuivant();
-                    //joueurgagnant();
+                    //joueurGagnant();
                     break;
                 case 3:
                     desintegrerlejeton(); // On appelle la méthode correspondante
                     GrilleInitiale.afficherGrilleSurConsole(); //on affiche la grille apres l'action
                     JoueurSuivant();
-                    //joueurgagnant();
+                    //joueurGagnant();
                     break;
                 default:
                     System.out.println("Choix non valide"); // On vérifie que le chiffre selectionné fait bien partie des options
@@ -224,9 +224,10 @@ public void JoueurSuivant() {
      System.out.println("\n"); }
  }
 
-/*public void joueurGgnant () {
-    if (etreGagnantePourJoueur(jetonCourant)==true) {
-        System.out.println(joueurCourant.Nom + "a gagné cette partie");
+/*public void joueurGagnant () {
+    if (etreGagnantePourJoueur(joueurCourant)==true) {
+        System.out.println(joueurCourant.Nom + "a gagné cette partie ! Félicitations");
     }
 } */
+
 }
