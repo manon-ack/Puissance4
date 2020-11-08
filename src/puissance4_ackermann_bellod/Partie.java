@@ -120,13 +120,6 @@ public void attribuerCouleursAuxJoueurs() { //attriue une couleur aux deux joueu
 }
 
 
-public Joueur prochainjoueur (Joueur joueur) {
-    if (ListeJoueurs[0]==joueurCourant){
-        return ListeJoueurs[1];
-    }
-    return ListeJoueurs[0];
-}
-
 public void initialiserPartie () {
     
     GrilleInitiale.viderGrille(); //on prepare la grille pour une partie
@@ -173,15 +166,6 @@ public void initialiserPartie () {
     System.out.println("\n");
 }
 
-/* public boolean tour () {
-    //mettre prochain joueur
-    //affiche la grille apres le premier jeu
-    //GrilleInitiale.afficherGrilleSurConsole();
-    if (etreGagnantePourJoueur(jetonCourant)==true) {
-        System.out.println(joueurCourant.Nom + "a gagné cette partie");
-    }
-    return false;
-} */
 
 public void debuterPartie () { //lance la partie 
     
@@ -198,25 +182,25 @@ public void debuterPartie () { //lance la partie
             switch (rep) {
                 case 1: 
                     jouerjeton(); // On appelle la méthode correspondante
-                    GrilleInitiale.afficherGrilleSurConsole();
+                    GrilleInitiale.afficherGrilleSurConsole(); //on affiche la grille apres l'action
                     JoueurSuivant();
+                    //joueurgagnant();
                     //affecterjeton pr savoir si ajout bien passé
-                    //tour 
                     break;
                 case 2:
                     recupererlejeton(); // On appelle la méthode correspondante
-                    GrilleInitiale.afficherGrilleSurConsole();
+                    GrilleInitiale.afficherGrilleSurConsole(); //on affiche la grille apres l'action
                     JoueurSuivant();
-                    //tour
+                    //joueurgagnant();
                     break;
                 case 3:
                     desintegrerlejeton(); // On appelle la méthode correspondante
-                    GrilleInitiale.afficherGrilleSurConsole();
+                    GrilleInitiale.afficherGrilleSurConsole(); //on affiche la grille apres l'action
                     JoueurSuivant();
+                    //joueurgagnant();
                     break;
                 default:
                     System.out.println("Choix non valide"); // On vérifie que le chiffre selectionné fait bien partie des options
-                    JoueurSuivant();
                     break;
             }
         } while (rep != 4);
@@ -225,15 +209,25 @@ public void debuterPartie () { //lance la partie
 
 public void JoueurSuivant() {
  if ( joueurCourant == ListeJoueurs[0]) {
+     System.out.println(joueurCourant.Nom + " a encore " + joueurCourant.nombreJetonsRestant + " jetons");
+     System.out.println(joueurCourant.Nom + " a " + joueurCourant.nombreDesintegrateurs + " désintégrateurs");
      joueurCourant = ListeJoueurs[1];
      System.out.println("\n");
      System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
      System.out.println("\n"); }
  else {
+     System.out.println(joueurCourant.Nom + " a encore " + joueurCourant.nombreJetonsRestant + " jetons");
+     System.out.println(joueurCourant.Nom + " a " + joueurCourant.nombreDesintegrateurs + " désintégrateurs");
      joueurCourant = ListeJoueurs[0];
      System.out.println("\n");
      System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
      System.out.println("\n"); }
  }
+
+/* public void joueurgagnant () {
+    if (etreGagnantePourJoueur(jetonCourant)==true) {
+        System.out.println(joueurCourant.Nom + "a gagné cette partie");
+    }
+} */
 
 }
