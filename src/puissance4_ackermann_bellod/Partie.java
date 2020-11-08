@@ -114,7 +114,7 @@ public boolean desintegrerlejeton(){
         return false; }
 }
 
-public void attribuerCouleursAuxJoueurs() { //attriue une couleur aux deux joueurs 
+public void attribuerCouleursAuxJoueurs() { //attribue une couleur aux deux joueurs 
     ListeJoueurs[0].Couleur = "Jaune";
     ListeJoueurs[1].Couleur = "Rouge";   
 }
@@ -174,6 +174,7 @@ public void debuterPartie () { //lance la partie
     joueurCourant=null;
     joueurCourant=ListeJoueurs[0];
     System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
+    System.out.println(joueurCourant.Nom + " a encore " + joueurCourant.nombreJetonsRestant + " jetons");
     System.out.println("\n");
     
     int rep; // On initialise rep       
@@ -183,21 +184,21 @@ public void debuterPartie () { //lance la partie
                 case 1: 
                     jouerjeton(); // On appelle la méthode correspondante
                     GrilleInitiale.afficherGrilleSurConsole(); //on affiche la grille apres l'action
+                    joueurGagnant();
                     JoueurSuivant();
-                    //joueurGagnant();
                     //affecterjeton pr savoir si ajout bien passé
                     break;
                 case 2:
                     recupererlejeton(); // On appelle la méthode correspondante
                     GrilleInitiale.afficherGrilleSurConsole(); //on affiche la grille apres l'action
+                    joueurGagnant();
                     JoueurSuivant();
-                    //joueurGagnant();
                     break;
                 case 3:
                     desintegrerlejeton(); // On appelle la méthode correspondante
                     GrilleInitiale.afficherGrilleSurConsole(); //on affiche la grille apres l'action
+                    joueurGagnant();
                     JoueurSuivant();
-                    //joueurGagnant();
                     break;
                 default:
                     System.out.println("Choix non valide"); // On vérifie que le chiffre selectionné fait bien partie des options
@@ -210,24 +211,26 @@ public void debuterPartie () { //lance la partie
 public void JoueurSuivant() {
  if ( joueurCourant == ListeJoueurs[0]) {
      System.out.println("\n");
-     System.out.println(joueurCourant.Nom + " a encore " + joueurCourant.nombreJetonsRestant + " jetons");
-     System.out.println(joueurCourant.Nom + " a " + joueurCourant.nombreDesintegrateurs + " désintégrateurs");
      joueurCourant = ListeJoueurs[1];
      System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
+     System.out.println(joueurCourant.Nom + " a encore " + joueurCourant.nombreJetonsRestant + " jetons");
+     System.out.println(joueurCourant.Nom + " a " + joueurCourant.nombreDesintegrateurs + " désintégrateurs");
      System.out.println("\n"); }
  else {
      System.out.println("\n");
-     System.out.println(joueurCourant.Nom + " a encore " + joueurCourant.nombreJetonsRestant + " jetons");
-     System.out.println(joueurCourant.Nom + " a " + joueurCourant.nombreDesintegrateurs + " désintégrateurs");
      joueurCourant = ListeJoueurs[0];
      System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
+     System.out.println(joueurCourant.Nom + " a encore " + joueurCourant.nombreJetonsRestant + " jetons");
+     System.out.println(joueurCourant.Nom + " a " + joueurCourant.nombreDesintegrateurs + " désintégrateurs");
      System.out.println("\n"); }
  }
 
-/*public void joueurGagnant () {
-    if (etreGagnantePourJoueur(joueurCourant)==true) {
-        System.out.println(joueurCourant.Nom + "a gagné cette partie ! Félicitations");
+ public void joueurGagnant () {
+    if (GrilleInitiale.etreGagnantePourJoueur(joueurCourant)==true) {
+        System.out.println(joueurCourant.Nom + " a gagné cette partie ! Félicitations");
+        System.exit(0);
     }
-} */
+} 
 
 }
+

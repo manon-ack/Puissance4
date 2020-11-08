@@ -141,7 +141,7 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
     
     //gagne si 4jetons alignés en colonnes
     for (int j=0;j<7;j++) {
-        for (int i=0;i<4;i++) {
+        for (int i=0;i<3;i++) {
             if ((Cellules[i][j].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i+1][j].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i+2][j].lireCouleurDuJeton()==jetonCourant.Couleur) && (Cellules[i+3][j].lireCouleurDuJeton()==jetonCourant.Couleur)){
             return true;
             } 
@@ -158,7 +158,7 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
     }
     
     //gagne si 4jetons alignés en diagonale vers le bas 
-    for (int i=0;i<6;i++) {
+    for (int i=0;i<3;i++) {
         for (int j=0; j<4; j++){
             if ((Cellules[i][j].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i+1][j+1].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i+2][j+2].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i+3][j+3].lireCouleurDuJeton()==jetonCourant.Couleur)) {
                 return true;
@@ -173,7 +173,7 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
 // Penser à mettre le cas ou personne ne gagne, grille complete sans 4 jetons alignés de la meme couleur
 
 public void tasserGrille (int j) { //si un jeton est capturé ou detruit, on decale de une ligne les jetons au dessus de la cellule liberée
-    for (int i=5; i<=0; i--) { //on part du bas de la grille
+    for (int i=5; i>=1; i--) { //on part du bas de la grille
         if (Cellules [i][j].jetonCourant == null) { //si la case est nulle qd le jeton a ete detruit ou capture
             Cellules[i][j].jetonCourant = Cellules[i-1][j].jetonCourant; //on decale d'une ligne
             Cellules[i-1][j].jetonCourant = null; // La case est maintenant vide
