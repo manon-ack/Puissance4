@@ -67,7 +67,7 @@ public boolean recupererlejeton(){
     int c;
     int l;
     System.out.println("Choissisez la colonne : ");
-    c = sc.nextInt()-1;
+    c = sc.nextInt()-1; //-1 à cause des indices 
     while (c > 6 || c <0) {
         System.out.println("ERREUR : choissisez une colonne valide");
         c = sc.nextInt()-1;
@@ -78,12 +78,13 @@ public boolean recupererlejeton(){
         System.out.println("ERREUR : choissisez une ligne valide");
         l = sc.nextInt()-1;
     }
-    if ((GrilleInitiale.Cellules[l][c].jetonCourant != null) && (GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()==joueurCourant.toString())) {
-        GrilleInitiale.recupererJeton(l,c);
-        GrilleInitiale.tasserGrille(c);
+    if ((GrilleInitiale.Cellules[l][c].jetonCourant != null) &&(GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()==joueurCourant.toString() && (GrilleInitiale.celluleOccupee(l,c)==true))) {
+        joueurCourant.ajouterJeton(GrilleInitiale.recupererJeton(l,c));
+        GrilleInitiale.tasserGrille(c); //on tasse la grille après la récupération
         return true;
     }
     else {
+        System.out.println("ERREUR : Ce jeton n'est pas à vous ou alors la case choisie est vide");
         return false; }
 }
 

@@ -209,6 +209,9 @@ public boolean supprimerJeton (int i, int j) { //supprime le jeton de la cellule
 }
 
 public Jeton recupererJeton (int i, int j) { // enleve le jeton de la cellule visée et renvoie une ref vers ce jeton
-    return Cellules[i][j].recupererJeton();
+    Jeton a;
+    a= Cellules[i][j].recupererJeton();
+    Cellules[i][j].supprimerJeton();
+    return a;
 }
 }
