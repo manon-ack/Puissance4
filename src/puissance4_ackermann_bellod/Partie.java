@@ -112,6 +112,7 @@ public boolean desintegrerlejeton(){
         return true;
     }
     else {
+        System.out.print("ERREUR : Vous ne pouvez pas désintégrer votre propre jeton ou alors la case choisie est vide");
         return false; }
 }
 
