@@ -66,18 +66,19 @@ public void activertrounoir (int j) {
 }
 
 public boolean etreRemplie () { //renvoie vraie si la grille est pleine
-    for (int i=0; i<6;i++) { //on parcourt la grille pour voir si elle est remplie
-        for (int j=0; j<7;j++) {
-            if (Cellules [i][j].recupererJeton() == null){
-                return false;
-            }
-            else{
-                return true;
-            }
-        }
+    int a=0;
+    for (int j=0; j<7;j++){
+        while (colonneRemplie(j)==true){
+          j++;
+          a=a+1;  
+        }    
     }
-    return true;
+    if (a==6){
+        return true;
+    }
+   return false;
 }
+
 
 public void viderGrille () { //vider la grille
     for (int i=0; i<6; i++) { //on parcourt les lignes
@@ -164,13 +165,13 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
                 return true;
             }
         }
-    }
-    if (etreRemplie() == true) {
+    }// Penser à mettre le cas ou personne ne gagne, grille complete sans 4 jetons alignés de la meme couleur
+    /*if (etreRemplie() == true) {
         System.out.println("La grille est pleine ! Vous avez perdu... Recommencer une partie !");
-       } 
+       } */
   return false;  
 }
-// Penser à mettre le cas ou personne ne gagne, grille complete sans 4 jetons alignés de la meme couleur
+
 
 public void tasserGrille (int j) { //si un jeton est capturé ou detruit, on decale de une ligne les jetons au dessus de la cellule liberée
     for (int i=5; i>=1; i--) { //on part du bas de la grille

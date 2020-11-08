@@ -232,7 +232,11 @@ public void JoueurSuivant() {
         System.out.println(joueurCourant.Nom + " a gagné cette partie ! Félicitations");
         System.exit(0);
     }
-} 
+    /*if(GrilleInitiale.etreRemplie()==true) {
+        System.out.println("La grille est pleine ! Vous avez perdu... Recommencer une partie !");
+        System.exit(0);
+    }*/
+    } 
 
 }
 
