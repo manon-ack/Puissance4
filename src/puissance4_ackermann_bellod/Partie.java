@@ -209,25 +209,24 @@ public void debuterPartie () { //lance la partie
 
 public void JoueurSuivant() {
  if ( joueurCourant == ListeJoueurs[0]) {
+     System.out.println("\n");
      System.out.println(joueurCourant.Nom + " a encore " + joueurCourant.nombreJetonsRestant + " jetons");
      System.out.println(joueurCourant.Nom + " a " + joueurCourant.nombreDesintegrateurs + " désintégrateurs");
      joueurCourant = ListeJoueurs[1];
-     System.out.println("\n");
      System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
      System.out.println("\n"); }
  else {
+     System.out.println("\n");
      System.out.println(joueurCourant.Nom + " a encore " + joueurCourant.nombreJetonsRestant + " jetons");
      System.out.println(joueurCourant.Nom + " a " + joueurCourant.nombreDesintegrateurs + " désintégrateurs");
      joueurCourant = ListeJoueurs[0];
-     System.out.println("\n");
      System.out.println("C'est à " + joueurCourant.Nom + " de jouer ");
      System.out.println("\n"); }
  }
 
-/* public void joueurgagnant () {
+/*public void joueurGgnant () {
     if (etreGagnantePourJoueur(jetonCourant)==true) {
         System.out.println(joueurCourant.Nom + "a gagné cette partie");
     }
 } */
-
 }

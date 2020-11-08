@@ -165,6 +165,9 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
             }
         }
     }
+    if (etreRemplie() == true) {
+        System.out.println("La grille est pleine ! Vous avez perdus, veuillez recommencer une partie");
+       } 
   return false;  
 }
 // Penser à mettre le cas ou personne ne gagne, grille complete sans 4 jetons alignés de la meme couleur
