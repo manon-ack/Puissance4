@@ -78,7 +78,7 @@ public boolean recupererlejeton(){
         System.out.println("ERREUR : choissisez une ligne valide");
         l = sc.nextInt()-1;
     }
-    if ((GrilleInitiale.Cellules[l][c].jetonCourant != null) &&(GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()==joueurCourant.toString() && (GrilleInitiale.celluleOccupee(l,c)==true))) {
+    if ((GrilleInitiale.Cellules[l][c].jetonCourant != null) &&(GrilleInitiale.Cellules[l][c].lireCouleurDuJeton().equals(joueurCourant.Couleur) && (GrilleInitiale.celluleOccupee(l,c)==true))) {
         joueurCourant.ajouterJeton(GrilleInitiale.recupererJeton(l,c));
         GrilleInitiale.tasserGrille(c); //on tasse la grille après la récupération
         return true;
@@ -105,7 +105,7 @@ public boolean desintegrerlejeton(){
         System.out.println("ERREUR : choissisez une ligne valide");
         l = sc.nextInt()-1;
     }
-    if (GrilleInitiale.Cellules[l][c].jetonCourant != null && GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()!=joueurCourant.toString()){
+    if (GrilleInitiale.Cellules[l][c].jetonCourant != null && GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()!=joueurCourant.Couleur){
         GrilleInitiale.supprimerJeton(l,c);
         joueurCourant.utiliserDesintegrateur();
         GrilleInitiale.tasserGrille(c);
