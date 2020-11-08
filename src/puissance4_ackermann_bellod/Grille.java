@@ -101,10 +101,10 @@ public void afficherGrilleSurConsole () {
             System.out.print("D");
         }
            
-        else if (Cellules[i][j].recupererJeton()==null) { //si il n'y a pas de jeton ni tn ni desint on affiche X 
+        else if (Cellules[i][j].jetonCourant==null) { //si il n'y a pas de jeton ni tn ni desint on affiche X 
             System.out.print(".");
         }
-        else if ((Cellules[i][j].recupererJeton()!=null) && (Cellules[i][j].presenceTrouNoir()== false) && (Cellules[i][j].presenceDesintegrateur()== false)){ //&& (Cellules[i][j].affecterJeton(unJeton)==true
+        else if ((Cellules[i][j].jetonCourant!=null) && (Cellules[i][j].presenceTrouNoir()== false) && (Cellules[i][j].presenceDesintegrateur()== false)){ //&& (Cellules[i][j].affecterJeton(unJeton)==true
             if (Cellules[i][j].lireCouleurDuJeton()=="Jaune") {
                 System.out.print("J"); //on affiche un J s'il y a un jeton jaune sur la cellule
             }
