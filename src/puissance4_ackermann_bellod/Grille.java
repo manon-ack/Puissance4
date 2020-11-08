@@ -101,7 +101,7 @@ public void afficherGrilleSurConsole () {
             System.out.print("D");
         }
            
-        else if (Cellules[i][j].jetonCourant==null) { //si il n'y a pas de jeton ni tn ni desint on affiche X 
+        else if (Cellules[i][j].jetonCourant==null) { //si il n'y a pas de jeton ni tn ni desint on affiche un point 
             System.out.print(".");
         }
         else if ((Cellules[i][j].jetonCourant!=null) && (Cellules[i][j].presenceTrouNoir()== false) && (Cellules[i][j].presenceDesintegrateur()== false)){ 
@@ -149,7 +149,7 @@ public boolean etreGagnantePourJoueur (Joueur jetonCourant) { //renvoie vrai si 
     }
     
     //gagne si 4jetons alignés en diagnonale  vers le haut
-    for (int i=0; i<6; i++) {
+    for (int i=3; i<6; i++) {
         for (int j=0; j<4; j++){
             if ((Cellules[i][j].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i-1][j+1].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i-2][j+2].lireCouleurDuJeton()==jetonCourant.Couleur)&&(Cellules[i-3][j+3].lireCouleurDuJeton()==jetonCourant.Couleur)) {
                 return true;
