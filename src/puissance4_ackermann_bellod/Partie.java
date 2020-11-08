@@ -106,8 +106,8 @@ public boolean desintegrerlejeton(){
     }
     if (GrilleInitiale.Cellules[l][c].jetonCourant != null && GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()!=joueurCourant.toString()){
         GrilleInitiale.supprimerJeton(l,c);
-        GrilleInitiale.tasserGrille(c);
         joueurCourant.utiliserDesintegrateur();
+        GrilleInitiale.tasserGrille(c);
         return true;
     }
     else {
