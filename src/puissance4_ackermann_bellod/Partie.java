@@ -79,7 +79,7 @@ public boolean recupererlejeton(){
         l = sc.nextInt()-1;
     }
     if ((GrilleInitiale.Cellules[l][c].jetonCourant != null) && (GrilleInitiale.Cellules[l][c].lireCouleurDuJeton()==joueurCourant.toString())) {
-        joueurCourant.ajouterJeton(GrilleInitiale.recupererJeton(l,c));
+        GrilleInitiale.recupererJeton(l,c);
         GrilleInitiale.tasserGrille(c);
         return true;
     }
