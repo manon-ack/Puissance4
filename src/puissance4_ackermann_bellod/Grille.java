@@ -67,16 +67,11 @@ public void activertrounoir (int j) {
 
 public boolean etreRemplie () { //renvoie vraie si la grille est pleine
     int a=0;
-    for (int j=0; j<7;j++){
-        while (colonneRemplie(j)==true){
-          j++;
-          a=a+1;  
-        }    
-    }
-    if (a==6){
-        return true;
-    }
-   return false;
+    int j=0;
+    while (j!=6 && colonneRemplie(j)==true){
+        j++;  
+        }
+    return (j==6);
 }
 
 
